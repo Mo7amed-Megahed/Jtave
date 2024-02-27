@@ -1,0 +1,36 @@
+
+// media query
+
+@mixin breakpoints ($point) {
+    @if ($point == mobile) {
+        @media (max-width : 767px) {
+            @content;
+        }
+    } @else if ($point == small) {
+        @media (min-width : 768px) and (max-width : 991px) {
+            @content;
+        }
+    } @else if ($point == medium) {
+        @media (min-width : 992px) and (max-width : 1199px) {
+            @content;
+        }
+    } @else if ($point == large) {
+        @media (min-width : 1200px) {
+        @content;
+        }
+    }
+}
+
+//  animation 
+@mixin keyf ($anim-name) {
+    @keyframes #{$anim-name} {
+        @content;
+    }
+}
+
+// flex box
+@mixin flexbox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -1,0 +1,59 @@
+@use "../helpers/variables" as *;
+@use "../helpers/mixin" as *;
+
+
+.contact {
+    background-color: #fff;
+    padding: 50px 0;
+    .container {
+        .contact-title {
+            margin-bottom: 50px;
+            h1 {
+                text-transform: uppercase;
+                font-weight: 900;
+                font-size: 40px;
+                span {
+                    color: $main-color;
+                }
+            }
+        }
+        .form {
+            form {
+                input , textarea {
+                    width: 100%;
+                    padding: 20px;
+                    margin: 20px 0;
+                    border-radius: 20px;
+                    border: none;
+                    background-color: #eaeaea;
+                    &.submit {
+                        width: 30%;
+                        background-color: #000;
+                        color: #fff;
+                        text-transform: uppercase;
+                        letter-spacing: 5px;
+                        font-size: 30px;
+                        transition: .5s ease-in-out;
+                        &:hover {
+                            background-color: $main-color
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@include breakpoints (mobile) {
+
+    .contact {
+        .container {
+            .form {
+                form {
+                    input.submit {
+                        width: 50%;
+                    }
+                }
+            }
+        }
+    }
+}

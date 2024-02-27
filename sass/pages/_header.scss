@@ -1,0 +1,310 @@
+
+@use "../helpers/variables" as *;
+@use "../helpers/mixin" as *;
+
+.header {
+    background-color: #fff;
+    margin: 0 20px;
+    padding: 20px;
+    @include flexbox;
+    .logo {
+        a {
+            font-size: 30px;
+            font-weight: bold;
+            color: black;
+        }
+    }
+    .menu-wrap {
+        .toggle {
+            display: none;
+        }
+        .menu {
+            ul {
+                @include flexbox;
+                li {
+                    margin-right: 10px;
+                    a {
+                        font-size: 22px;
+                        padding: 10px 15px;
+                        color: black;
+                        font-weight: bold;
+                        transition: .5s;
+                        &.active ,
+                        &:hover {
+                            color: $main-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+@include breakpoints (mobile) {
+    .header {
+        .menu-wrap {
+            position: fixed;
+            top: 10px;
+            right: 0px;
+            z-index: 1;
+            .toggle {
+                display: block;
+                width: 60px;
+                height: 60px;
+                position: absolute;
+                top: 0;
+                right: 0;
+                opacity: 0;
+                z-index: 5;
+                &:checked {
+                    transition: .4s;
+                    ~ .hamburger {
+                        padding: 0 10px 20px 30px;
+                        width: 100px;
+                        height: 100px;
+                        box-shadow: 5px 5px 10px #333;
+                        border-bottom-left-radius: 100%;
+                        > div {
+                            transform: rotate(135deg);
+                            &::before , &::after {
+                                transform: rotate(90deg);
+                                top: 0;
+                            }
+                        }
+                    }
+                    ~ .menu {
+                        visibility: visible;
+                        width: 70%;
+                        > div {
+                            > div {
+                                opacity: 1;
+                                transition-delay: .4s;
+                            }
+                        }
+                    }
+                }
+                &:checked:hover {
+                    ~ .hamburger {
+                        > div {
+                            transform: rotate(225deg);
+                        }
+                    }
+                }
+            }
+            .hamburger {
+                width: 60px;
+                height: 60px;
+                position: absolute;
+                top: 0;
+                right: 0;
+                background-color: black;
+                padding: 10px;
+                @include flexbox;
+                transition: .5s;
+                > div {
+                    position: relative;
+                    width: 100%;
+                    height: 3px;
+                    background-color: $main-color;
+                    transition: .5s;
+                    &::before, &::after {
+                        content: "";
+                        position: absolute;
+                        top: -10px;
+                        background-color: $main-color;
+                        width: 100%;
+                        height: 3px;
+                    }
+                    &::after {
+                        top: 10px;
+                    }
+                }
+            }
+            .menu {
+                position: fixed;
+                top: 14%;
+                right: 0;
+                width: 0%;
+                height:80%;
+                display: flex;
+                justify-content: right;
+                align-items: center;
+                z-index: -1;
+                visibility: hidden;
+                transition: .5s;
+                > div {
+                    background-color: #333;
+                    border-radius: 20px;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    transition: .5s;
+                    > div {
+                        text-align: center;
+                        opacity: 0;
+                        transition: .5s;
+                    }
+                }
+                ul {
+                    display: block;
+                    li {
+                        padding: 30px 0;
+                        a {
+                            color: #fff;
+                            font-size: 30px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// @include breakpoints (mobile) {
+//     .header {
+//         position: relative;
+//         .menu-wrap {
+//             position: fixed;
+//             top: 0;
+//             right: 0;
+//             z-index: 3;
+//             .toggle {
+//                 display: block;
+//                 width: 60px;
+//                 height: 60px;
+//                 position: absolute;
+//                 top: 0;
+//                 right: 0;
+//                 opacity: 0;
+//             }
+//             .hamburger {
+//                 width: 60px;
+//                 height: 60px;
+//                 position: absolute;
+//                 top: 0;
+//                 right: 0;
+//                 padding: 10px;
+//                 background-color: black;
+//                 @include flexbox;
+//                 transition: .5s;
+//                 &:hover {
+//                     width: 100px;
+//                     height: 100px;
+//                     padding: 0 10px 20px 30px;
+//                     box-shadow: 1px 1px 5px #333;
+//                     border-bottom-left-radius: 100%;
+//                     ~ .menu {
+//                         visibility: visible;
+//                         .menu-0 {
+//                             transform: scale(1);
+//                             .menu-1 {
+//                                 opacity: 1;
+//                                 transition-delay: .5s;
+//                             }
+//                         }
+//                     }
+//                     > div {
+//                         transform: rotate(135deg);
+//                         &::before ,
+//                         &::after {
+//                             content: "";
+//                             transform: rotate(90deg);
+//                             top: 0;
+//                         }
+//                     }
+//                 }
+//                 > div {
+//                     width: 100%;
+//                     height: 3px;
+//                     background-color: #fff;
+//                     position: relative;
+//                     &::before ,
+//                     &::after {
+//                         content: "";
+//                         position: absolute;
+//                         top: -10px;
+//                         right: 0;
+//                         background-color: #fff;
+//                         height: 3px;
+//                         width: 100%;
+//                         transition: .8s;
+//                     }
+//                     &::after {
+//                         top: 10px;
+//                     }
+//                 }
+//             }
+//             .menu {
+//                 position: fixed;
+//                 top: 0;
+//                 right: 0;
+//                 width: 100%;
+//                 height: 100%;
+//                 overflow: hidden;
+//                 display: flex;
+//                 justify-content: right;
+//                 align-items: center;
+//                 z-index: -1;
+//                 visibility: hidden;
+//                 .menu-0 {
+//                     background-color: #000;
+//                     padding: 50px;
+//                     text-align: center;
+//                     display: flex;
+//                     justify-content: center;
+//                     align-items: center;
+//                     width: 70%;
+//                     height: 70%;
+//                     border-radius: 5%;
+//                     transform: scale(0);
+//                     transition: .6s ease;
+//                     .menu-1 {
+//                         text-align: center;
+//                         transition: .5s;
+//                         opacity: 0;
+//                     }
+//                 }
+//                 ul {
+//                     display: block;
+//                     li {
+//                         padding: 30px 0;
+//                         a {
+//                             color: #fff;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }

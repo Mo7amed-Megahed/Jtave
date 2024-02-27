@@ -1,0 +1,118 @@
+
+@use "../helpers/variables" as *;
+@use "../helpers/mixin" as *;
+
+.about {
+    padding: 100px 0;
+    background-color: #fff;
+    .container {
+        .about-title {
+            h1 {
+                padding-bottom: 10px;
+                font-size: 40px;
+                font-weight: 900;
+                text-transform: uppercase;
+                span {
+                    color: $main-color;
+                }
+            }
+            p {
+                color: #222;
+            }
+        }
+        .about-content {
+            @include flexbox;
+            .about-desc {
+                p {
+                    color: #777;
+                    margin-bottom: 30px;
+                    line-height: 1.5;
+                }
+            }
+        }
+    }
+}
+@include breakpoints (mobile) {
+    .about-title {
+        p {
+            margin-bottom: 20px;
+        }
+    } 
+    .about-content {
+        flex-direction: column;
+        .image {
+            margin-top: 30px;
+            img {
+                width: 90%;
+            }
+        }
+    }
+}
+
+.location {
+    .container {
+        .location-title {
+            padding: 50px 0;
+            h1 {
+                text-transform: uppercase;
+                font-size: 40px;
+                font-weight: 900;
+            }
+        }
+        .location-cards {
+            @include flexbox;
+            .box {
+                // width: (100% / 3);
+                &:not(:last-of-type) {
+                    margin-right: 10px;
+                }
+                .box-desc {
+                    background-color: #fff;
+                    border-radius: 10px;
+                    overflow: hidden;
+                    .image {
+                        width: 100%;
+                        img {
+                            width: 100%;
+                        }
+                    }
+                    .text {
+                        padding: 25px;
+                        h2 {
+                            margin-bottom: 20px;
+                            font-weight: 900;
+                        }
+                        p {
+                            color: #777;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@include breakpoints (mobile) {
+    .location {
+        .container {
+            .location-title {
+                h1 {
+                    font-size: 25px;
+                }
+            }
+            .location-cards {
+                flex-direction: column;
+                .box {
+                    width: (100% / 1);
+                    &:not(:last-of-type) {
+                        margin-right: 0px;
+                    }
+                } 
+            }
+        }
+    }
+}
+@include breakpoints (small) {
+    .location .loca-cards .box {
+        width: (100% / 2);
+    }
+}

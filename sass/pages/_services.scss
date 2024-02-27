@@ -1,0 +1,66 @@
+
+@use "../helpers/variables" as *;
+@use "../helpers/mixin" as *;
+
+.services {
+    padding-top: 50px;
+        .services-title {
+            margin-bottom: 50px;
+            h1 {
+                font-size: 40px;
+                font-weight: 900;
+                text-transform: uppercase;
+                padding-bottom: 10px;
+                span {
+                    color: #fff;
+                }
+            }
+            p {
+                color: #555;
+                font-weight: 500;
+            }
+        }
+        .services-cards {
+            @include flexbox;
+            .box {
+                width: (100% / 3);
+                &:not(:last-of-type) {
+                    margin-right: 15px;
+                }
+                .content {
+                    background-color: #fff;
+                    padding: 50px 30px;
+                    border-radius: 10px;
+                    i {
+                        color: $main-color;
+                        font-size: 70px;
+                        margin: 50px 0;
+                    }
+                    h2 {
+                        margin-bottom: 30px;
+                        font-weight: bold;
+                        font-size: 30px;
+                    }
+                    p {
+                        color: #555;
+                    }
+                }
+            }
+        }
+}
+@include breakpoints (mobile) {
+    .services-cards {
+        flex-direction: column;
+    }
+    .services .services-cards .box {
+        width: (100% / 1);
+    }
+    .services .services-cards .box:not(:last-of-type) {
+        margin-right: 0px;
+    }
+}
+@include breakpoints (small) {
+    .services .services-cards .box {
+        width: (100% / 2);
+    }
+}

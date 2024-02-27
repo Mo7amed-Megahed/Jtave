@@ -1,0 +1,46 @@
+@use "../helpers/variables" as *;
+@use "../helpers/mixin" as *;
+
+.home {
+    @include flexbox;
+    .container {
+        .home-content {
+            @include flexbox;
+            .text-home {
+
+                .home-title {
+                    margin-bottom: 50px;
+                    font-size: 30px;
+                    font-weight: 900;
+                    span {
+                        color: #fff;
+                    }
+                }
+                .home-desc {
+                    margin-bottom: 50px;
+                    color: #fff;
+                }
+            }
+            .image {
+                img {
+                    position: relative;
+                    width: 100%;
+                    animation: go-up 2s infinite linear;
+                    @include keyf (go-up) {
+                    0% {bottom: 0px;}
+                    50% {bottom: 30px;}
+                    100% {bottom: 0px;}
+                    }
+                }
+            }
+        }
+    }
+}
+@include breakpoints (mobile) {
+    .home-content {
+        flex-direction: column;
+        .image {
+            margin-top: 30px;
+        }
+    }
+}

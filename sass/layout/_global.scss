@@ -1,0 +1,45 @@
+
+@use "../helpers/variables" as * ;
+@use "../helpers/mixin" as * ;
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+html {
+    scroll-behavior: smooth;
+}
+body {
+    background-color: $main-color;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Lato", sans-serif;
+}
+ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+.container {
+    padding: 0 100px;
+    margin: 40px auto;
+    position: relative;
+}
+
+@include breakpoints (mobile) {
+    .container {
+        padding: 0 30px;
+    }
+}
+@include breakpoints (small) {
+    .container {
+        padding: 0 50px;
+    }
+}
+@include breakpoints (medium) {
+    .container {
+        padding: 0 70px;
+    }
+}
